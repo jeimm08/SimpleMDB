@@ -19,6 +19,7 @@ public class MemoryMovieRepository : IMovieRepository
         int length = Math.Clamp(size, 0, totalCount - start);
         var values = db.Movies.Slice(start, length);
         var result = new PagedResult<Movie>(totalCount, values);
+
         return await Task.FromResult(result);
     }
 
@@ -26,12 +27,14 @@ public class MemoryMovieRepository : IMovieRepository
     {
         newMovie.Id = db.NextMovieId();
         db.Movies.Add(newMovie);
+
         return await Task.FromResult(newMovie);
     }
 
     public async Task<Movie?> ReadMovie(int id)
     {
         Movie? result = db.Movies.FirstOrDefault(m => m.Id == id);
+
         return await Task.FromResult(result);
     }
 
@@ -45,6 +48,7 @@ public class MemoryMovieRepository : IMovieRepository
             result.Year = newData.Year;
             result.Description = newData.Description;
         }
+
         return await Task.FromResult(result);
     }
 
@@ -52,6 +56,7 @@ public class MemoryMovieRepository : IMovieRepository
     {
         Movie? result = db.Movies.FirstOrDefault(m => m.Id == id);
         if (result != null) { db.Movies.Remove(result); }
+        
         return await Task.FromResult(result);
     }
 }
