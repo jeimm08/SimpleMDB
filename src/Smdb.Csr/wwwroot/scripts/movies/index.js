@@ -1,23 +1,27 @@
 import { $, apiFetch, renderStatus, clearChildren, getQueryParam } from
     '/scripts/common.js';
 (async function initMoviesIndex() {
-    const page = Math.max(1, Number(getQueryParam('page') ||
-        localStorage.getItem('page') || '1'));
-    const size = Math.min(100, Math.max(1, Number(getQueryParam('size') ||
-        localStorage.getItem('size') || '9')));
+    const page = Math.max(1, Number(getQueryParam('page') || localStorage.getItem('page') || '1'));
+    const size = Math.min(100, Math.max(1, Number(getQueryParam('size') || localStorage.getItem('size') || '9')));
+
     localStorage.setItem('page', page);
     localStorage.setItem('size', size);
+
     const listEl = $('#movie-list');
     const statusEl = $('#status');
     const tpl = $('#movie-card');
+
     try {
         const payload = await apiFetch(`/movies?page=${page}&size=${size}`);
         const items = Array.isArray(payload) ? payload : (payload.data || []);
+
         clearChildren(listEl);
+
         if (items.length === 0) {
             renderStatus(statusEl, 'warn', 'No movies found for this page.');
         } else {
             renderStatus(statusEl, '', '');
+
             for (const m of items) {
                 const frag = tpl.content.cloneNode(true);
                 const root = frag.querySelector('.card');
@@ -31,6 +35,7 @@ import { $, apiFetch, renderStatus, clearChildren, getQueryParam } from
                 listEl.appendChild(frag);
             }
         }
+
         listEl.addEventListener('click', async (ev) => {
             const btn = ev.target.closest('button.btn-delete[data-id]');
             if (!btn) return;
@@ -45,8 +50,10 @@ import { $, apiFetch, renderStatus, clearChildren, getQueryParam } from
                 renderStatus(statusEl, 'err', `Delete failed: ${err.message}`);
             }
         });
+
         const sizeSelect = document.getElementById('page-size');
         const pageSizes = [3, 6, 9, 12, 15];
+
         for (const s of pageSizes) {
             const opt = document.createElement("option");
             opt.value = s;
@@ -63,6 +70,7 @@ import { $, apiFetch, renderStatus, clearChildren, getQueryParam } from
             const newUrl = `${window.location.pathname}?${params.toString()}`;
             window.location.href = newUrl;
         });
+
         // Pagination
         $('#page-num').textContent = `Page ${page}`;
         const firstPage = page <= 1;
@@ -71,6 +79,7 @@ import { $, apiFetch, renderStatus, clearChildren, getQueryParam } from
         const prevBtn = $('#prev');
         const nextBtn = $('#next');
         const lastBtn = $('#last');
+        
         firstBtn.href = `?page=1&size=${size}`;
         prevBtn.href = `?page=${page - 1}&size=${size}`;
         nextBtn.href = `?page=${page + 1}&size=${size}`;

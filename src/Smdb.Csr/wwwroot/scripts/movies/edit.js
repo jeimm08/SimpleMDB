@@ -4,6 +4,7 @@ import { $, apiFetch, renderStatus, getQueryParam, captureMovieForm } from
     const id = getQueryParam('id');
     const form = $('#movie-form');
     const statusEl = $('#status');
+
     // Disables form fields and do not allow editing if movie id is missing.
     if (!id) {
         renderStatus(statusEl, 'err', 'Missing ?id in URL.');
@@ -11,6 +12,7 @@ import { $, apiFetch, renderStatus, getQueryParam, captureMovieForm } from
             el => el.disabled = true);
         return;
     }
+
     // Populates form with data from movie (id) fetched from the API server.
     try {
         const m = await apiFetch(`/movies/${encodeURIComponent(id)}`);
@@ -22,6 +24,7 @@ import { $, apiFetch, renderStatus, getQueryParam, captureMovieForm } from
         renderStatus(statusEl, 'err', `Failed to load data: ${err.message}`);
         return;
     }
+    
     // Executes the given function whenever the form 'submit' event is triggered.
     form.addEventListener('submit', async (ev) => {
         ev.preventDefault();

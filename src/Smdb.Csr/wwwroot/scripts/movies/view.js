@@ -2,7 +2,9 @@ import { $, apiFetch, renderStatus, getQueryParam } from '/scripts/common.js';
 (async function initMovieView() {
     const id = getQueryParam('id');
     const statusEl = $('#status');
+
     if (!id) return renderStatus(statusEl, 'err', 'Missing ?id in URL.');
+    
     try {
         const m = await apiFetch(`/movies/${encodeURIComponent(id)}`);
         $('#movie-id').textContent = m.id;
