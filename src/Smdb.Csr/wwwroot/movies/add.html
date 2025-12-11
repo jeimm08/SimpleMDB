@@ -7,18 +7,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="/styles/main.css" />
     <script type="module" src="/scripts/movies/add.js" defer></script>
+    <link rel="icon" type="image/png" href="/simplemdb.png" />
 </head>
 
 <body>
     <header>
         <h1>Add Movie</h1>
-        <nav>
-            <ul>
-                <li><a href="/" class="btn">Home</a></li>
-                <li><a href="/movies/index.html" class="btn">All Movies</a></li>
-            </ul>
-        </nav>
     </header>
+    <nav>
+        <ul>
+            <img src="/simplemdb.png" alt="SimpleMDB Logo" class="logo" />
+            <li><a href="/" class="btn">Home</a></li>
+            <li><a href="/movies/index.html" class="btn">All Movies</a></li>
+        </ul>
+    </nav>
     <main class="container">
         <div id="status" class="status">Loading...</div>
         <form id="movie-form" class="grid">

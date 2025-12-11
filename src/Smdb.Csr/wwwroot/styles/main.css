@@ -1,0 +1,219 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    font-family: Tahoma;
+    font-size: 20px;
+    line-height: 1.5;
+    background: #f8ead4;
+    color: #c8674f;
+    min-height: 100%;
+}
+
+/* ----------------------wwwroot---index.html------------------------------- */
+header {
+    background: #e5ba72;
+    color: #39312c;
+    padding: 1rem;
+    text-align: center;
+}
+
+header .logo {
+    display: block;
+    margin: 0 auto 1rem auto;
+    max-width: 175px;
+    height: auto;
+}
+
+header h1 {
+    margin-bottom: 0.5rem;
+    font-size: 50px;
+    font-family: Tahoma;
+}
+
+nav {
+    padding: 1rem;
+    background: #f8ead4;
+    text-align: center;
+}
+
+nav .logo {
+    display: block;
+    width: 45px;
+    height: auto;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav a.btn {
+    text-decoration: none;
+    color: #f8ead4;
+    background: #39312c;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+}
+
+nav a.btn:hover {
+    background: #888380;
+}
+
+main .container {
+    padding: 1rem 4rem;
+    text-align: left;
+}
+
+/* --------------------------wwwroot---movies------------------------------- */
+.status {
+    margin-bottom: 1rem;
+    padding: 0.75rem;
+    border-radius: 4px;
+}
+
+.status.ok {
+    background: #599ba3;
+    color: #f8ead4;
+    border: 1px solid #39312c;
+}
+
+.status.err {
+    background: #c8674f;
+    color: #f8ead4;
+    border: 1px solid #39312c;
+}
+
+.status.warn {
+    background: #d8905d;
+    color: #f8ead4;
+    border: 1px solid #39312c;
+}
+
+/* Forms */
+form.grid {
+    padding: 1rem 4rem;
+    text-align: left;
+    display: grid;
+    gap: 1rem;
+}
+
+.field label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.25rem;
+}
+
+.field input,
+.field textarea,
+.field select {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #bbb;
+    border-radius: 4px;
+    resize: none;
+}
+
+.form-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    color: #f8ead4;
+    background: #39312c;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    font: inherit;
+}
+
+.btn.primary {
+    color: #f8ead4;
+    background: #39312c;
+}
+
+.btn.danger {
+    color: #f8ead4;
+    background: #d8905d;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+/* Cards */
+.grid.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    padding: 1rem 4rem;
+    text-align: left;
+}
+
+.card {
+    background: #f9f1e2;
+    border: 1px solid #39312c;
+    border-radius: 6px;
+    padding: 1rem;
+}
+
+.card h3 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.badge {
+    background: #f9f1e2;
+    border-radius: 4px;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.85em;
+}
+
+/* Tables */
+.table {
+    width: 100%;
+    max-width: 900px;
+    margin: 1rem auto;
+    border-collapse: collapse;
+}
+
+.table th,
+.table td {
+    border: 1px solid #39312c;
+    padding: 0.75rem;
+    text-align: left;
+}
+
+.table th {
+    background: #f9f1e2;
+}
+
+/* Controls (pagination, etc.) */
+.controls {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    padding: 1rem 3rem;
+    text-align: left;
+}
+
+.controls .page-size-container {
+    margin-left: auto;
+}
