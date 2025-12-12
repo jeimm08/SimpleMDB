@@ -1,0 +1,40 @@
+@baseUrl = http://localhost:8080/api/v1/movies
+
+### Read all movies
+# GET /api/v1/movies?page=1&size=5
+GET {{baseUrl}}?page=1&size=5
+Accept: application/json
+
+### Read one movie
+# GET /api/v1/movies/{id}
+GET {{baseUrl}}/1
+Accept: application/json
+
+### Create a movie
+# POST /api/v1/movies
+POST {{baseUrl}}
+Content-Type: application/json
+Accept: application/json
+
+{
+  "title": "The Matrix",
+  "year": 1999,
+  "description": "A computer hacker learns about the true nature of reality."
+}
+
+### Update a movie
+# PUT /api/v1/movies/{id}
+PUT {{baseUrl}}/46
+Content-Type: application/json
+Accept: application/json
+
+{
+  "title": "The Matrix Reloaded",
+  "year": 2003,
+  "description": "Neo and the rebels continue their fight against the machines."
+}
+
+### Delete a movie
+# DELETE /api/v1/movies/{id}
+DELETE {{baseUrl}}/1
+Accept: application/json
